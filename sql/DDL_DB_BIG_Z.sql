@@ -28,7 +28,7 @@ CREATE TABLE big_z.employee (
     EmployeeID SERIAL PRIMARY KEY,
     EmployeeName TEXT NOT NULL,
     EmployeeTitle ENUM('order clerck', 'manager', 'staff') NOT NULL,
-    EmployeeEducationLevel ENUM('highschool', 'college', 'master', 'phd') NOT NULL DEFAULT 'highschool',
+    EmployeeEducationLevel ENUM('highschool', 'college', 'master', 'phd') NOT NULL DEFAULT 'highschool'
 );
 
 CREATE TABLE big_z.customer (
