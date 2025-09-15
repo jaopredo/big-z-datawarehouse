@@ -100,7 +100,7 @@ for _ in range(ORDER):  # 10 pedidos
     for _ in range(random.randint(1, ORDERVIA_MAXIMUM)):
         prod_id = random.choice(products)
         qty = random.randint(1, MAXIMUM_PRODUCT_AMOUNT)
-        cur.execute("INSERT INTO big_z.orderedvia (ProductID, OrderID, Quantity) VALUES (%s, %s, %s)",
+        cur.execute("INSERT INTO big_z.orderedvia (ProductID, OrderID, OrderedviaQuantity) VALUES (%s, %s, %s)",
                     (prod_id, order_id, qty))
 
 
