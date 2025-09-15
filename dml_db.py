@@ -62,24 +62,30 @@ for i in range(PRODUCTS):
 
 
 # ---------- ORDERCLERK ----------
-orderclerks = []
+employees = []
 for i in range(ORDERCLERK):
-    orderclerks.append(i+1)
-    cur.execute("INSERT INTO big_z.orderclerk (OCName) VALUES (%s)", (fake.first_name(),))
+    employees.append(i+1)
+    cur.execute("INSERT INTO big_z.orderclerk (EmployeeName, EmployeeTitle, EmployeeEducationLevel) VALUES (%s, %s, %s)",
+        (
+            fake.first_name(),
+            random.choice(['order clerck', 'manager', 'staff']),
+            random.choice(['highschool', 'college', 'master', 'phd'])
+        )
+    )
 
 # ---------- CUSTOMER ----------
 customers = []
 for i in range(CUSTOMER):
     customers.append(i+1)
     cur.execute("INSERT INTO big_z.customer (CustomerName, CustomerType, CustomerZip) VALUES (%s, %s, %s)",
-                (fake.company(), random.choice(["Repair Shop", "Retailer"]), fake.postcode()))
+                (fake.name(), random.choice(["Repair Shop", "Retailer"]), fake.postcode()))
 
 # ---------- ORDERS + ORDEREDVIA ----------
 start_date = datetime(2020, 1, 1, 9, 0)
 for _ in range(ORDER):  # 10 pedidos
     cust_id = random.choice(customers)
     depot_id = random.choice(depots)
-    clerk_id = random.choice(orderclerks)
+    clerk_id = random.choice(employees)
     order_date = start_date + timedelta(days=random.randint(0, 5))
     order_time = order_date + timedelta(minutes=random.randint(0, 120))
 

@@ -24,9 +24,11 @@ CREATE TABLE big_z.product (
     FOREIGN KEY (SupplierID) REFERENCES big_z.supplier(SupplierID)
 );
 
-CREATE TABLE big_z.orderclerk (
-    OCID SERIAL PRIMARY KEY,
-    OCName TEXT NOT NULL
+CREATE TABLE big_z.employee (
+    EmployeeID SERIAL PRIMARY KEY,
+    EmployeeName TEXT NOT NULL,
+    EmployeeTitle ENUM('order clerck', 'manager', 'staff') NOT NULL,
+    EmployeeEducationLevel ENUM('highschool', 'college', 'master', 'phd') NOT NULL DEFAULT 'highschool',
 );
 
 CREATE TABLE big_z.customer (
@@ -52,7 +54,7 @@ CREATE TABLE big_z.order (
 CREATE TABLE big_z.orderedvia (
     ProductID INT NOT NULL,
     OrderID INT NOT NULL,
-    Quantity INT NOT NULL,
+    OrderedviaQuantity INT NOT NULL,
 
     FOREIGN KEY (ProductID) REFERENCES big_z.product(ProductID),
     FOREIGN KEY (OrderID) REFERENCES big_z.order(OrderID)
