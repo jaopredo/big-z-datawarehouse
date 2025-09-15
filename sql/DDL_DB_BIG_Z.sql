@@ -24,11 +24,13 @@ CREATE TABLE big_z.product (
     FOREIGN KEY (SupplierID) REFERENCES big_z.supplier(SupplierID)
 );
 
+CREATE TYPE employeetitle AS ENUM('order clerck', 'manager', 'staff');
+CREATE TYPE employeeeducationlevel AS ENUM('highschool', 'college', 'master', 'phd');
 CREATE TABLE big_z.employee (
     EmployeeID SERIAL PRIMARY KEY,
     EmployeeName TEXT NOT NULL,
-    EmployeeTitle ENUM('order clerck', 'manager', 'staff') NOT NULL,
-    EmployeeEducationLevel ENUM('highschool', 'college', 'master', 'phd') NOT NULL DEFAULT 'highschool'
+    EmployeeTitle employeetitle NOT NULL,
+    EmployeeEducationLevel employeeeducationlevel NOT NULL DEFAULT 'highschool'
 );
 
 CREATE TABLE big_z.customer (
