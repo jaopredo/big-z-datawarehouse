@@ -73,7 +73,7 @@ for i in range(ORDERCLERKS):
     cur.execute("INSERT INTO human_resources.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
         (
             name,
-            'order clerk',
+            'order clerck',
             random.choice(['highschool', 'college', 'master', 'phd']),
             random.randint(2020, 2025)
         )
@@ -82,7 +82,7 @@ for i in range(ORDERCLERKS):
 for j in range(EMPLOYEES):
     cur.execute("INSERT INTO human_resources.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
         (
-            name,
+            fake.first_name(),
             random.choice(['order clerck', 'manager', 'staff']),
             random.choice(['highschool', 'college', 'master', 'phd']),
             random.randint(2000, 2025)

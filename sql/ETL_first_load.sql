@@ -29,4 +29,10 @@ FROM big_z.Depot d;
 
 
 -- Now I unite the employees informations from the two fonts to insert onto the 
-
+INSERT INTO dw_big_z.EmployeeDimension SELECT
+    gen_random_uuid(),
+    e.EmployeeID,
+    e.EmployeeName,
+    e.EmployeeTitle,
+    e.EmployeeEducationLevel
+FROM big_z.Employee o LEFT JOIN human_resources.Employee e ON o.EmployeeID=e.EmployeeID;
