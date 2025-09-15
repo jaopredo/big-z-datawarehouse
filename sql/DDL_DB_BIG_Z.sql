@@ -12,7 +12,7 @@ CREATE TABLE big_z.supplier (
 
 CREATE TABLE big_z.depot (
     DepotID SERIAL PRIMARY KEY,
-    DepotSize INT NOT NULL,
+    DepotSize TEXT NOT NULL,
     DepotZip TEXT NOT NULL
 );
 
