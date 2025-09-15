@@ -4,6 +4,7 @@ import random
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import os
+from config import *
 
 load_dotenv()
 
@@ -24,11 +25,11 @@ fake = Faker()
 
 # Conexão com o banco
 conn = psycopg2.connect(
-    dbname='big_z',
-    user='joao.pedro',
-    password='joao.pedro',
-    host='10.61.49.160',
-    port='3389'
+    dbname=DB_NAME,
+    user=DB_USER,
+    password=DB_PASSWORD,
+    host=DB_HOST,
+    port=DB_PORT
 )
 cur = conn.cursor()
 
