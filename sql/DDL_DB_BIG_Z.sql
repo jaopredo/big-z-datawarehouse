@@ -24,14 +24,9 @@ CREATE TABLE big_z.product (
     FOREIGN KEY (SupplierID) REFERENCES big_z.supplier(SupplierID)
 );
 
-CREATE TYPE employeetitle AS ENUM('order clerck', 'manager', 'staff');
-CREATE TYPE employeeeducationlevel AS ENUM('highschool', 'college', 'master', 'phd');
 CREATE TABLE big_z.employee (
     EmployeeID SERIAL PRIMARY KEY,
-    EmployeeName TEXT NOT NULL,
-    EmployeeTitle employeetitle NOT NULL,
-    EmployeeEducationLevel employeeeducationlevel NOT NULL DEFAULT 'highschool',
-    EmployeeYearOfHire INT NOT NULL
+    EmployeeName TEXT NOT NULL
 );
 
 CREATE TABLE big_z.customer (
@@ -61,4 +56,17 @@ CREATE TABLE big_z.orderedvia (
 
     FOREIGN KEY (ProductID) REFERENCES big_z.product(ProductID),
     FOREIGN KEY (OrderID) REFERENCES big_z.order(OrderID)
+);
+
+
+CREATE SCHEMA human_resources;
+
+CREATE TYPE employeetitle AS ENUM('order clerck', 'manager', 'staff');
+CREATE TYPE employeeeducationlevel AS ENUM('highschool', 'college', 'master', 'phd');
+CREATE TABLE human_resources.employee (
+    EmployeeID SERIAL PRIMARY KEY,
+    EmployeeName TEXT NOT NULL,
+    EmployeeTitle employeetitle NOT NULL,
+    EmployeeEducationLevel employeeeducationlevel NOT NULL DEFAULT 'highschool',
+    EmployeeYearOfHire INT NOT NULL
 );

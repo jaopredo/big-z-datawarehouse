@@ -62,12 +62,17 @@ for i in range(PRODUCTS):
 
 
 # ---------- ORDERCLERK ----------
+# Inserting into the big_z schema and, later, on the humanresources table
 employees = []
 for i in range(EMPLOYEE):
     employees.append(i+1)
-    cur.execute("INSERT INTO big_z.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
+    name = fake.first_name()
+
+    cur.execute("INSERT INTO big_z.employee (EmployeeName) VALUES (%s)", (name))
+
+    cur.execute("INSERT INTO human_resources.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
         (
-            fake.first_name(),
+            name,
             random.choice(['order clerck', 'manager', 'staff']),
             random.choice(['highschool', 'college', 'master', 'phd']),
             random.randint(2000, 2025)
