@@ -13,7 +13,8 @@ load_dotenv()
 SUPPLIERS = 10
 DEPOTS = 20
 PRODUCTS = 100
-EMPLOYEE = 40
+ORDERCLERKS = 30
+EMPLOYEES = 20
 ORDER = 200
 CUSTOMER = 97
 ORDERVIA_MAXIMUM = 10
@@ -65,12 +66,20 @@ for i in range(PRODUCTS):
 # ---------- ORDERCLERK ----------
 # Inserting into the big_z schema and, later, on the humanresources table
 employees = []
-for i in range(EMPLOYEE):
+for i in range(ORDERCLERKS):
     employees.append(i+1)
     name = fake.first_name()
-
     cur.execute("INSERT INTO big_z.employee (EmployeeName) VALUES (%s)", (name,))
+    cur.execute("INSERT INTO human_resources.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
+        (
+            name,
+            'order clerk',
+            random.choice(['highschool', 'college', 'master', 'phd']),
+            random.randint(2020, 2025)
+        )
+    )
 
+for j in range(EMPLOYEES):
     cur.execute("INSERT INTO human_resources.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
         (
             name,
@@ -97,18 +106,27 @@ for _ in range(ORDER):  # 10 pedidos
     order_time = order_date + timedelta(minutes=random.randint(0, 120))
 
     # Inserir pedido
+    repeated = random.random() <= .20
+    orders_ids = []
     cur.execute("""
         INSERT INTO big_z."order" (CustomerID, DepotID, OCID, OrderDate, OrderTime)
         VALUES (%s, %s, %s, %s, %s) RETURNING OrderID
     """, (cust_id, depot_id, clerk_id, order_date.date(), order_time.time()))
-    order_id = cur.fetchone()[0]
+    orders_ids.append(cur.fetchone()[0])
+    if repeated:
+        cur.execute("""
+            INSERT INTO big_z."order" (CustomerID, DepotID, OCID, OrderDate, OrderTime)
+            VALUES (%s, %s, %s, %s, %s) RETURNING OrderID
+        """, (cust_id, depot_id, clerk_id, order_date.date(), order_time.time()))
+        orders_ids.append(cur.fetchone()[0])
 
     # Inserir entre 1 e ORDERVIA_MAXIMUM produtos no pedido
     for _ in range(random.randint(1, ORDERVIA_MAXIMUM)):
         prod_id = random.choice(products)
         qty = random.randint(1, MAXIMUM_PRODUCT_AMOUNT)
-        cur.execute("INSERT INTO big_z.orderedvia (ProductID, OrderID, OrderedviaQuantity) VALUES (%s, %s, %s)",
-                    (prod_id, order_id, qty))
+        for order_id in orders_ids:
+            cur.execute("INSERT INTO big_z.orderedvia (ProductID, OrderID, OrderedviaQuantity) VALUES (%s, %s, %s)",
+                        (prod_id, order_id, qty))
 
 
 conn.commit()

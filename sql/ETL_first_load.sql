@@ -1,8 +1,32 @@
 
-SELECT
+-- Making the easiest loads (Product, Customer and Depot because we only need to make a quick read
+-- on the tables)
+
+-- Inserting the products on the dimension
+INSERT INTO dw_big_z.ProductDimension SELECT
     gen_random_uuid(),
     p.ProductID,
     p.ProductName,
     p.ProductType,
     s.SupplierName
-FROM big_z.Product p FULL JOIN big_z.Supplier s ON p.SupplierID=s.SupplierID;
+FROM big_z.Product p LEFT JOIN big_z.Supplier s ON p.SupplierID=s.SupplierID;
+
+-- Inserting the customers on the dimension
+INSERT INTO dw_big_z.CustomerDimension SELECT
+    gen_random_uuid(),
+    c.CustomerID,
+    c.CustomerType,
+    c.CustomerZip
+FROM big_z.Customer c;
+
+-- Inserting the depots on the dimension
+INSERT INTO dw_big_z.DepotDimension SELECT
+    gen_random_uuid(),
+    d.DepotID,
+    d.DepotSize,
+    d.DepotZip
+FROM big_z.Depot d;
+
+
+-- Now I unite the employees informations from the two fonts to insert onto the 
+
