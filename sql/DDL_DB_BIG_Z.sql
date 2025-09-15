@@ -30,7 +30,8 @@ CREATE TABLE big_z.employee (
     EmployeeID SERIAL PRIMARY KEY,
     EmployeeName TEXT NOT NULL,
     EmployeeTitle employeetitle NOT NULL,
-    EmployeeEducationLevel employeeeducationlevel NOT NULL DEFAULT 'highschool'
+    EmployeeEducationLevel employeeeducationlevel NOT NULL DEFAULT 'highschool',
+    EmployeeYearOfHire INT NOT NULL
 );
 
 CREATE TABLE big_z.customer (

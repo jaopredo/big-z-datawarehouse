@@ -65,11 +65,12 @@ for i in range(PRODUCTS):
 employees = []
 for i in range(EMPLOYEE):
     employees.append(i+1)
-    cur.execute("INSERT INTO big_z.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel) VALUES (%s, %s, %s)",
+    cur.execute("INSERT INTO big_z.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
         (
             fake.first_name(),
             random.choice(['order clerck', 'manager', 'staff']),
-            random.choice(['highschool', 'college', 'master', 'phd'])
+            random.choice(['highschool', 'college', 'master', 'phd']),
+            random.randint(2000, 2025)
         )
     )
 
