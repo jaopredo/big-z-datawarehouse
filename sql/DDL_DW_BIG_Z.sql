@@ -3,14 +3,14 @@
 CREATE SCHEMA dw_big_z;
 
 CREATE TABLE dw_big_z.DepotDimension (
-    DepotKey SERIAL PRIMARY KEY,
+    DepotKey VARCHAR PRIMARY KEY,
     DepotID INT NOT NULL,
     DepotSize TEXT NOT NULL,
     DepotZip TEXT NOT NULL
 );
 
 CREATE TABLE dw_big_z.EmployeeDimension (
-    EmployeeKey SERIAL PRIMARY KEY,
+    EmployeeKey VARCHAR PRIMARY KEY,
     EmployeeID INT NOT NULL,
     EmployeeName TEXT NOT NULL,
     EmployeeTitle employeetitle NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE dw_big_z.EmployeeDimension (
 );
 
 CREATE TABLE dw_big_z.Calendar (
-    CalendarKey SERIAL PRIMARY KEY,
+    CalendarKey VARCHAR PRIMARY KEY,
     CompleteDate DATE NOT NULL,
     WeekDay INT NOT NULL CHECK (1 <= WeekDay AND WeekDay <= 7),
     MonthDay INT NOT NULL CHECK (1 <= MonthDay AND MonthDay <= 30),
@@ -28,7 +28,7 @@ CREATE TABLE dw_big_z.Calendar (
 );
 
 CREATE TABLE dw_big_z.ProductDimension (
-    ProductKey SERIAL PRIMARY KEY,
+    ProductKey VARCHAR PRIMARY KEY,
     ProductID INT NOT NULL,
     ProductName TEXT NOT NULL,
     ProductType TEXT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE dw_big_z.ProductDimension (
 );
 
 CREATE TABLE dw_big_z.CustomerDimension (
-    CustomerKey SERIAL PRIMARY KEY,
+    CustomerKey VARCHAR PRIMARY KEY,
     CustomerID INT NOT NULL,
     CustomerType TEXT NOT NULL,
     CustomerZip TEXT NOT NULL
