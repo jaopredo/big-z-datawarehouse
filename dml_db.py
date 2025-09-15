@@ -68,7 +68,7 @@ for i in range(EMPLOYEE):
     employees.append(i+1)
     name = fake.first_name()
 
-    cur.execute("INSERT INTO big_z.employee (EmployeeName) VALUES (%s)", (name))
+    cur.execute("INSERT INTO big_z.employee (EmployeeName) VALUES (%s)", (name,))
 
     cur.execute("INSERT INTO human_resources.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES (%s, %s, %s, %s)",
         (
