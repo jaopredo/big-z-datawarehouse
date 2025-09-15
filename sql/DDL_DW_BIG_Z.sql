@@ -9,8 +9,6 @@ CREATE TABLE dw_big_z.DepotDimension (
     DepotZip TEXT NOT NULL
 );
 
-CREATE TYPE employeetitle AS ENUM('order clerck', 'manager', 'staff');
-CREATE TYPE employeeeducationlevel AS ENUM('highschool', 'college', 'master', 'phd');
 CREATE TABLE dw_big_z.EmployeeDimension (
     EmployeeKey SERIAL PRIMARY KEY,
     EmployeeID INT NOT NULL,
