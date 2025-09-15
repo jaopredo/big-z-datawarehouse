@@ -22,10 +22,10 @@ CREATE TABLE dw_big_z.EmployeeDimension (
 CREATE TABLE dw_big_z.Calendar (
     CalendarKey SERIAL PRIMARY KEY,
     CompleteDate DATE NOT NULL,
-    WeekDay INT NOT NULL CHECK (1 <= WeekDay <= 7),
-    MonthDay INT NOT NULL CHECK (1 <= MonthDay <= 30),
-    Month INT NOT NULL CHECK (1 <= Month <= 12),
-    Trimestry INT NOT NULL CHECK (1 <= Trimestry <= 4),
+    WeekDay INT NOT NULL CHECK (1 <= WeekDay AND WeekDay <= 7),
+    MonthDay INT NOT NULL CHECK (1 <= MonthDay AND MonthDay <= 30),
+    Month INT NOT NULL CHECK (1 <= Month AND Month <= 12),
+    Trimestry INT NOT NULL CHECK (1 <= Trimestry AND Trimestry <= 4),
     Year INT NOT NULL CHECK (0 <= Year)
 );
 
@@ -54,9 +54,9 @@ CREATE TABLE dw_big_z.OrderFact (
     DepotKey INT NOT NULL,
     EmployeeKey INT NOT NULL,
 
-    FOREIGN KEY (CustomerKey) REFERENCES big_z.CustomerDimension(CustomerKey),
-    FOREIGN KEY (ProductKey) REFERENCES big_z.ProductDimension(ProductKey),
-    FOREIGN KEY (CalendarKey) REFERENCES big_z.Calendar(CalendarKey),
-    FOREIGN KEY (DepotKey) REFERENCES big_z.DepotDimension(DepotKey),
-    FOREIGN KEY (EmployeeKey) REFERENCES big_z.EmployeeDimension(EmployeeKey)
+    FOREIGN KEY (CustomerKey) REFERENCES dw_big_z.CustomerDimension(CustomerKey),
+    FOREIGN KEY (ProductKey) REFERENCES dw_big_z.ProductDimension(ProductKey),
+    FOREIGN KEY (CalendarKey) REFERENCES dw_big_z.Calendar(CalendarKey),
+    FOREIGN KEY (DepotKey) REFERENCES dw_big_z.DepotDimension(DepotKey),
+    FOREIGN KEY (EmployeeKey) REFERENCES dw_big_z.EmployeeDimension(EmployeeKey)
 );
