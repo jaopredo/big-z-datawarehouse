@@ -12,7 +12,7 @@ load_dotenv()
 SUPPLIERS = 10
 DEPOTS = 20
 PRODUCTS = 100
-ORDERCLERK = 40
+EMPLOYEE = 40
 ORDER = 200
 CUSTOMER = 97
 ORDERVIA_MAXIMUM = 10
@@ -63,9 +63,9 @@ for i in range(PRODUCTS):
 
 # ---------- ORDERCLERK ----------
 employees = []
-for i in range(ORDERCLERK):
+for i in range(EMPLOYEE):
     employees.append(i+1)
-    cur.execute("INSERT INTO big_z.orderclerk (EmployeeName, EmployeeTitle, EmployeeEducationLevel) VALUES (%s, %s, %s)",
+    cur.execute("INSERT INTO big_z.employee (EmployeeName, EmployeeTitle, EmployeeEducationLevel) VALUES (%s, %s, %s)",
         (
             fake.first_name(),
             random.choice(['order clerck', 'manager', 'staff']),
