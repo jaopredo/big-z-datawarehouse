@@ -50,7 +50,7 @@ CREATE TABLE big_z.order (
 
     FOREIGN KEY (CustomerID) REFERENCES big_z.customer(CustomerID),
     FOREIGN KEY (DepotID) REFERENCES big_z.depot(DepotID),
-    FOREIGN KEY (OCID) REFERENCES big_z.orderclerk(OCID)
+    FOREIGN KEY (OCID) REFERENCES big_z.employee(EmployeeID)
 );
 
 CREATE TABLE big_z.orderedvia (
