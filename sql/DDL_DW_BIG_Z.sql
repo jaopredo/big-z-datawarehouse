@@ -22,7 +22,7 @@ CREATE TABLE dw_big_z.Calendar (
     CalendarKey VARCHAR PRIMARY KEY,
     CompleteDate DATE NOT NULL,
     WeekDay dw_big_z.WEEKDAY NOT NULL,
-    MonthDay INT NOT NULL CHECK (1 <= MonthDay AND MonthDay <= 30),
+    MonthDay INT NOT NULL CHECK (1 <= MonthDay AND MonthDay <= 31),
     Month INT NOT NULL CHECK (1 <= Month AND Month <= 12),
     Trimestry INT NOT NULL CHECK (1 <= Trimestry AND Trimestry <= 4),
     Year INT NOT NULL CHECK (0 <= Year)
