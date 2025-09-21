@@ -40,7 +40,7 @@ INSERT INTO dw_big_z.EmployeeDimension SELECT
 FROM big_z.Employee o LEFT JOIN human_resources.Employee e ON o.EmployeeID=e.EmployeeID;
 
 -- Now I insert all the order's dates onto the calendar dimension
-SELECT
+INSERT INTO dw_big_z.Calendar SELECT
     gen_random_uuid(),
     c.CompleteDate,
     c.WeekDay,
@@ -59,11 +59,11 @@ FROM (
     FROM big_z.Order o
 ) c
 EXCEPT SELECT
-    c.CalendarKey,
-    c.CompleteDate,
-    c.WeekDay,
-    c.MonthDay,
-    c.Month,
-    c.Trimestry,
-    c.Year
-FROM dw_big_z.CalendarDimension;
+    dwc.CalendarKey,
+    dwc.CompleteDate,
+    dwc.WeekDay,
+    dwc.MonthDay,
+    dwc.Month,
+    dwc.Trimestry,
+    dwc.Year
+FROM dw_big_z.Calendar dwc;
