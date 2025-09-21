@@ -41,10 +41,29 @@ FROM big_z.Employee o LEFT JOIN human_resources.Employee e ON o.EmployeeID=e.Emp
 
 -- Now I insert all the order's dates onto the calendar dimension
 SELECT
-    o.OrderDate AS CompleteDate,
-    CAST(TO_CHAR(o.OrderDate, 'DY') AS dw_big_z.WEEKDAY) AS WeekDay,
-    EXTRACT(DAY FROM o.OrderDate) AS MonthDay,
-    EXTRACT(MONTH FROM o.OrderDate) AS Month,
-    CAST(TO_CHAR(o.OrderDate, 'Q') AS INT) AS Trimestry,
-    EXTRACT(YEAR FROM o.OrderDate) AS Year
-FROM big_z.Order o;
+    gen_random_uuid(),
+    c.CompleteDate,
+    c.WeekDay,
+    c.MonthDay,
+    c.Month,
+    c.Trimestry,
+    c.Year
+FROM (
+    SELECT DISTINCT
+        o.OrderDate AS CompleteDate,
+        CAST(TO_CHAR(o.OrderDate, 'DY') AS dw_big_z.WEEKDAY) AS WeekDay,
+        EXTRACT(DAY FROM o.OrderDate) AS MonthDay,
+        EXTRACT(MONTH FROM o.OrderDate) AS Month,
+        CAST(TO_CHAR(o.OrderDate, 'Q') AS INT) AS Trimestry,
+        EXTRACT(YEAR FROM o.OrderDate) AS Year
+    FROM big_z.Order o
+) c
+EXCEPT SELECT
+    c.CalendarKey,
+    c.CompleteDate,
+    c.WeekDay,
+    c.MonthDay,
+    c.Month,
+    c.Trimestry,
+    c.Year
+FROM dw_big_z.CalendarDimension;
