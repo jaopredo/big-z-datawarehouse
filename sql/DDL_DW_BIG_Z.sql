@@ -17,10 +17,11 @@ CREATE TABLE dw_big_z.EmployeeDimension (
     EmployeeEducationLevel employeeeducationlevel NOT NULL
 );
 
+CREATE TYPE dw_big_z.WEEKDAY AS ENUM('SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT');
 CREATE TABLE dw_big_z.Calendar (
     CalendarKey VARCHAR PRIMARY KEY,
     CompleteDate DATE NOT NULL,
-    WeekDay INT NOT NULL CHECK (1 <= WeekDay AND WeekDay <= 7),
+    WeekDay WEEKDAY NOT NULL,
     MonthDay INT NOT NULL CHECK (1 <= MonthDay AND MonthDay <= 30),
     Month INT NOT NULL CHECK (1 <= Month AND Month <= 12),
     Trimestry INT NOT NULL CHECK (1 <= Trimestry AND Trimestry <= 4),

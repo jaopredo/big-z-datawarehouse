@@ -11,6 +11,7 @@ INSERT INTO dw_big_z.ProductDimension SELECT
     s.SupplierName
 FROM big_z.Product p LEFT JOIN big_z.Supplier s ON p.SupplierID=s.SupplierID;
 
+
 -- Inserting the customers on the dimension
 INSERT INTO dw_big_z.CustomerDimension SELECT
     gen_random_uuid(),
@@ -18,6 +19,7 @@ INSERT INTO dw_big_z.CustomerDimension SELECT
     c.CustomerType,
     c.CustomerZip
 FROM big_z.Customer c;
+
 
 -- Inserting the depots on the dimension
 INSERT INTO dw_big_z.DepotDimension SELECT
@@ -36,3 +38,9 @@ INSERT INTO dw_big_z.EmployeeDimension SELECT
     e.EmployeeTitle,
     e.EmployeeEducationLevel
 FROM big_z.Employee o LEFT JOIN human_resources.Employee e ON o.EmployeeID=e.EmployeeID;
+
+-- Now I insert all the order's dates onto the calendar dimension
+SELECT
+    o.OrderDate AS CompleteDate,
+    
+FROM big_z.Order o;
