@@ -52,7 +52,7 @@ CREATE TABLE big_z.Orders (
 CREATE TABLE big_z.OrderedVia (
     ProductID INT NOT NULL,
     OrderID INT NOT NULL,
-    OrderedviaQuantity INT NOT NULL,
+    OrderedViaQuantity INT NOT NULL,
 
     FOREIGN KEY (ProductID) REFERENCES big_z.Products(ProductID),
     FOREIGN KEY (OrderID) REFERENCES big_z.Orders(OrderID)

@@ -19,7 +19,7 @@ INSERT INTO big_z.Products (ProductName, ProductType, SupplierID) VALUES
 INSERT INTO human_resources.Employees (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES
 ('Tony', 'order clerk', 'high school', 2010),   -- OC1
 ('Wes', 'order clerk', 'college', 2016),    -- OC2
-('Lilly', 'order clerk', 'college'. 2016);  -- OC3
+('Lilly', 'order clerk', 'college', 2016);  -- OC3
 
 -- Inserindo atendentes na tabela do operacional
 INSERT INTO big_z.Employees (EmployeeID, EmployeeName) SELECT
@@ -45,7 +45,7 @@ INSERT INTO big_z.Orders (CustomerID, DepotID, OCID, OrderDate, OrderTime) VALUE
 (3, 2, 3, '2020-01-03', '09:45:00'); -- O8
 
 -- Inserindo produtos de cada pedido (ORDEREDVIA)
-INSERT INTO big_z.OrderedVia (ProductID, OrderID, Quantity) VALUES
+INSERT INTO big_z.OrderedVia (ProductID, OrderID, OrderedviaQuantity) VALUES
 (1, 1, 8),  -- P1 em O1
 (2, 1, 4),  -- P2 em O1
 (1, 2, 12), -- P1 em O2
