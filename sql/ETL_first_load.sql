@@ -34,7 +34,11 @@ FROM big_z.Depot d;
 INSERT INTO dw_big_z.EmployeeDimension SELECT
     gen_random_uuid(),
     e.EmployeeID,
-    e.EmployeeName,
+    CASE
+        WHEN CHAR_LENGTH(e.EmployeeName) >= CHAR_LENGTH(o.EmployeeName)
+        THEN e.EmployeeName
+        ELSE o.EmployeeName
+    END AS EmployeeName,
     e.EmployeeTitle,
     e.EmployeeEducationLevel
 FROM big_z.Employee o LEFT JOIN human_resources.Employee e ON o.EmployeeID=e.EmployeeID;
