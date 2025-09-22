@@ -66,7 +66,7 @@ CREATE TYPE EMPLOYEEEDUCATIONLEVEL AS ENUM('highschool', 'college', 'master', 'p
 CREATE TABLE human_resources.Employees (
     EmployeeID SERIAL PRIMARY KEY,
     EmployeeName TEXT NOT NULL,
-    EmployeeTitle human_resources.EMPLOYEETITLE NOT NULL,
-    EmployeeEducationLevel human_resources.EMPLOYEEEDUCATIONLEVEL NOT NULL DEFAULT 'highschool',
+    EmployeeTitle EMPLOYEETITLE NOT NULL,
+    EmployeeEducationLevel EMPLOYEEEDUCATIONLEVEL NOT NULL DEFAULT 'highschool',
     EmployeeYearOfHire INT NOT NULL
 );
