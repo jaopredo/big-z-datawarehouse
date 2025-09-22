@@ -9,7 +9,7 @@ INSERT INTO dw_big_z.ProductDimension SELECT
     p.ProductName,
     p.ProductType,
     s.SupplierName
-FROM big_z.Product p LEFT JOIN big_z.Supplier s ON p.SupplierID=s.SupplierID;
+FROM big_z.Product p LEFT JOIN big_z.Suppliers s ON p.SupplierID=s.SupplierID;
 
 
 -- Inserting the customers on the dimension
@@ -18,7 +18,7 @@ INSERT INTO dw_big_z.CustomerDimension SELECT
     c.CustomerID,
     c.CustomerType,
     c.CustomerZip
-FROM big_z.Customer c;
+FROM big_z.Customers c;
 
 
 -- Inserting the depots on the dimension
@@ -27,7 +27,7 @@ INSERT INTO dw_big_z.DepotDimension SELECT
     d.DepotID,
     d.DepotSize,
     d.DepotZip
-FROM big_z.Depot d;
+FROM big_z.Depots d;
 
 
 -- Now I unite the employees informations from the two fonts to insert onto the 
@@ -41,7 +41,7 @@ INSERT INTO dw_big_z.EmployeeDimension SELECT
     END AS EmployeeName,
     e.EmployeeTitle,
     e.EmployeeEducationLevel
-FROM big_z.Employee o LEFT JOIN human_resources.Employee e ON o.EmployeeID=e.EmployeeID;
+FROM big_z.Employees o LEFT JOIN human_resources.Employees e ON o.EmployeeID=e.EmployeeID;
 
 -- Now I insert all the order's dates onto the calendar dimension
 INSERT INTO dw_big_z.Calendar SELECT
@@ -60,7 +60,7 @@ FROM (
         EXTRACT(MONTH FROM o.OrderDate) AS Month,
         CAST(TO_CHAR(o.OrderDate, 'Q') AS INT) AS Trimestry,
         EXTRACT(YEAR FROM o.OrderDate) AS Year
-    FROM big_z.Order o
+    FROM big_z.Orders o
 ) c
 EXCEPT SELECT
     dwc.CalendarKey,
@@ -86,13 +86,13 @@ INSERT INTO dw_big_z.OrderFact SELECT
 FROM (
     SELECT DISTINCT ON (ord.OrderDate, ord.OrderTime, ord.CustomerID, ord.DepotID, ord.OCID)
         *
-    FROM big_z.Order ord
+    FROM big_z.Orders ord
 ) o
     INNER JOIN big_z.OrderedVia ov ON o.OrderID=ov.OrderID
-    INNER JOIN big_z.Product p ON ov.ProductID=p.ProductID
-    INNER JOIN big_z.Depot d ON d.DepotID=o.DepotID
-    LEFT JOIN human_resources.Employee e ON e.EmployeeID=o.OCID
-    INNER JOIN big_z.Customer c ON c.CustomerID=o.CustomerID
+    INNER JOIN big_z.Products p ON ov.ProductID=p.ProductID
+    INNER JOIN big_z.Depots d ON d.DepotID=o.DepotID
+    LEFT JOIN human_resources.Employees e ON e.EmployeeID=o.OCID
+    INNER JOIN big_z.Customers c ON c.CustomerID=o.CustomerID
 
     INNER JOIN dw_big_z.CustomerDimension dwc ON dwc.CustomerID=o.CustomerID
     INNER JOIN dw_big_z.EmployeeDimension dwe ON dwe.EmployeeID=o.OCID
