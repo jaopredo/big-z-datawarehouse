@@ -121,12 +121,12 @@ for _ in range(ORDER):  # 10 pedidos
         orders_ids.append(cur.fetchone()[0])
 
     # Inserir entre 1 e ORDERVIA_MAXIMUM produtos no pedido
-    for _ in range(random.randint(1, ORDERVIA_MAXIMUM)):
-        prod_id = random.choice(products)
+    prods = random.sample(products, k=random.randint(1,ORDERVIA_MAXIMUM))
+    for prod in prods:
         qty = random.randint(1, MAXIMUM_PRODUCT_AMOUNT)
         for order_id in orders_ids:
             cur.execute("INSERT INTO big_z.orderedvia (ProductID, OrderID, OrderedviaQuantity) VALUES (%s, %s, %s)",
-                        (prod_id, order_id, qty))
+                        (prod, order_id, qty))
 
 
 conn.commit()
