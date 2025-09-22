@@ -17,7 +17,7 @@ INSERT INTO big_z.Products (ProductName, ProductType, SupplierID) VALUES
 
 -- Inserindo os atendentes (EMPLOYEES)
 INSERT INTO human_resources.Employees (EmployeeName, EmployeeTitle, EmployeeEducationLevel, EmployeeYearOfHire) VALUES
-('Tony', 'order clerk', 'high school', 2010),   -- OC1
+('Tony', 'order clerk', 'highschool', 2010),   -- OC1
 ('Wes', 'order clerk', 'college', 2016),    -- OC2
 ('Lilly', 'order clerk', 'college', 2016);  -- OC3
 
