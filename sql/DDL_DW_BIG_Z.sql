@@ -39,6 +39,7 @@ CREATE TABLE dw_big_z.ProductDimension (
 CREATE TABLE dw_big_z.CustomerDimension (
     CustomerKey UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     CustomerID INT NOT NULL,
+    CustomerName TEXT NOT NULL,
     CustomerType TEXT NOT NULL,
     CustomerZip TEXT NOT NULL
 );

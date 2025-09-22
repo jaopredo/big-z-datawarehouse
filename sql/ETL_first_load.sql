@@ -16,6 +16,7 @@ FROM big_z.Products p LEFT JOIN big_z.Suppliers s ON p.SupplierID=s.SupplierID;
 INSERT INTO dw_big_z.CustomerDimension SELECT
     gen_random_uuid(),
     c.CustomerID,
+    c.CustomerName,
     c.CustomerType,
     c.CustomerZip
 FROM big_z.Customers c;
