@@ -9,7 +9,7 @@ INSERT INTO dw_big_z.ProductDimension SELECT
     p.ProductName,
     p.ProductType,
     s.SupplierName
-FROM big_z.Product p LEFT JOIN big_z.Suppliers s ON p.SupplierID=s.SupplierID;
+FROM big_z.Products p LEFT JOIN big_z.Suppliers s ON p.SupplierID=s.SupplierID;
 
 
 -- Inserting the customers on the dimension
