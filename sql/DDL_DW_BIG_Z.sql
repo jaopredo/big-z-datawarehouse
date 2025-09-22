@@ -53,6 +53,8 @@ CREATE TABLE dw_big_z.OrderFact (
     DepotKey UUID NOT NULL,
     EmployeeKey UUID NOT NULL,
 
+    PRIMARY KEY (CustomerKey, ProductKey, CalendarKey, DepotKey, EmployeeKey),
+
     FOREIGN KEY (CustomerKey) REFERENCES dw_big_z.CustomerDimension(CustomerKey),
     FOREIGN KEY (ProductKey) REFERENCES dw_big_z.ProductDimension(ProductKey),
     FOREIGN KEY (CalendarKey) REFERENCES dw_big_z.Calendar(CalendarKey),

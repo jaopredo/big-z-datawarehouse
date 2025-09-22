@@ -67,3 +67,32 @@ EXCEPT SELECT
     dwc.Trimestry,
     dwc.Year
 FROM dw_big_z.Calendar dwc;
+
+
+-- To finish, inserting the data into the Facts Table
+INSERT INTO dw_big_z.OrderFact SELECT
+    o.OrderID,
+    ov.OrderedviaQuantity,
+    o.OrderTime,
+    dwc.CustomerKey,
+    dwp.ProductKey,
+    dwcal.CalendarKey,
+    dwd.DepotKey,
+    dwe.EmployeeKey
+FROM (
+    SELECT DISTINCT ON (ord.OrderDate, ord.OrderTime, ord.CustomerID, ord.DepotID, ord.OCID)
+        *
+    FROM big_z.Order ord
+) o
+    INNER JOIN big_z.OrderedVia ov ON o.OrderID=ov.OrderID
+    INNER JOIN big_z.Product p ON ov.ProductID=p.ProductID
+    INNER JOIN big_z.Depot d ON d.DepotID=o.DepotID
+    LEFT JOIN human_resources.Employee e ON e.EmployeeID=o.OCID
+    INNER JOIN big_z.Customer c ON c.CustomerID=o.CustomerID
+
+    INNER JOIN dw_big_z.CustomerDimension dwc ON dwc.CustomerID=o.CustomerID
+    INNER JOIN dw_big_z.EmployeeDimension dwe ON dwe.EmployeeID=o.OCID
+    INNER JOIN dw_big_z.DepotDimension dwd ON dwd.DepotID=o.DepotID
+    INNER JOIN dw_big_z.ProductDimension dwp ON dwp.ProductID=ov.ProductID
+    INNER JOIN dw_big_z.Calendar dwcal ON dwcal.CompleteDate=o.OrderDate
+;
