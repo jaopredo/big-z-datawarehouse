@@ -21,7 +21,7 @@ CREATE TABLE big_z.Products (
     ProductName TEXT NOT NULL,
     ProductType TEXT NOT NULL,
     SupplierID INT NOT NULL,
-    FOREIGN KEY (SupplierID) REFERENCES big_z.supplier(SupplierID)
+    FOREIGN KEY (SupplierID) REFERENCES big_z.Suppliers(SupplierID)
 );
 
 CREATE TABLE big_z.Employees (
@@ -44,9 +44,9 @@ CREATE TABLE big_z.Orders (
     DepotID INT NOT NULL,
     OCID INT NOT NULL,
 
-    FOREIGN KEY (CustomerID) REFERENCES big_z.customer(CustomerID),
-    FOREIGN KEY (DepotID) REFERENCES big_z.depot(DepotID),
-    FOREIGN KEY (OCID) REFERENCES big_z.employee(EmployeeID)
+    FOREIGN KEY (CustomerID) REFERENCES big_z.Customers(CustomerID),
+    FOREIGN KEY (DepotID) REFERENCES big_z.Depots(DepotID),
+    FOREIGN KEY (OCID) REFERENCES big_z.Employees(EmployeeID)
 );
 
 CREATE TABLE big_z.OrderedVia (
@@ -54,8 +54,8 @@ CREATE TABLE big_z.OrderedVia (
     OrderID INT NOT NULL,
     OrderedviaQuantity INT NOT NULL,
 
-    FOREIGN KEY (ProductID) REFERENCES big_z.product(ProductID),
-    FOREIGN KEY (OrderID) REFERENCES big_z.order(OrderID)
+    FOREIGN KEY (ProductID) REFERENCES big_z.Products(ProductID),
+    FOREIGN KEY (OrderID) REFERENCES big_z.Orders(OrderID)
 );
 
 
