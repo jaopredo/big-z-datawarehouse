@@ -13,8 +13,8 @@ CREATE TABLE dw_big_z.EmployeeDimension (
     EmployeeKey UUID DEFAULT gen_random_uuid() PRIMARY KEY,
     EmployeeID INT NOT NULL,
     EmployeeName TEXT NOT NULL,
-    EmployeeTitle employeetitle NOT NULL,
-    EmployeeEducationLevel employeeeducationlevel NOT NULL
+    EmployeeTitle EMPLOYEETITLE NOT NULL,
+    EmployeeEducationLevel EMPLOYEEEDUCATIONLEVEL NOT NULL
 );
 
 CREATE TYPE dw_big_z.WEEKDAY AS ENUM('SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT');

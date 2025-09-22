@@ -61,8 +61,8 @@ CREATE TABLE big_z.OrderedVia (
 
 CREATE SCHEMA human_resources;
 
-CREATE TYPE human_resources.EMPLOYEETITLE AS ENUM('order clerk', 'manager', 'staff');
-CREATE TYPE human_resources.EMPLOYEEEDUCATIONLEVEL AS ENUM('highschool', 'college', 'master', 'phd');
+CREATE TYPE EMPLOYEETITLE AS ENUM('order clerk', 'manager', 'staff');
+CREATE TYPE EMPLOYEEEDUCATIONLEVEL AS ENUM('highschool', 'college', 'master', 'phd');
 CREATE TABLE human_resources.Employees (
     EmployeeID SERIAL PRIMARY KEY,
     EmployeeName TEXT NOT NULL,
