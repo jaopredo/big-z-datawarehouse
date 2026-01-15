@@ -1,0 +1,583 @@
+{
+  "diagramType": 2,
+  "data": {
+    "nodes": [
+      {
+        "id": "f06fea1a-3a50-4adf-aba8-fcb6e232e0e7",
+        "type": "Table",
+        "position": {
+          "x": 629,
+          "y": 99
+        },
+        "data": {
+          "label": "OrderFact",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "fa5cf562-1ab9-4983-82a6-47a4c7a6ea74",
+              "name": "OrderID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "6001d2e1-984e-4b01-bba5-6f90e5a6a8fe",
+              "name": "ProductQuantity",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "ef46eacc-56a4-4ddf-a1f4-65fa3b521ee5",
+              "name": "OrderHour",
+              "type": "Custom",
+              "position": 0,
+              "size": "TIME",
+              "isPrimaryKey": false
+            },
+            {
+              "id": "fk_2cd0a4f9-d9ec-4720-95fe-241066569dbf",
+              "name": "fk_Calendar",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "da4be0b1-0894-45ae-8c6e-2b9f02c9ed1f",
+                "sourceTableId": "ae891d80-0a02-4663-a3a6-4d27e562abec",
+                "columns": [
+                  {
+                    "id": "fk_8ec33a38-f6ac-4a7a-9f52-68b5759757a1",
+                    "name": "CalendarKey",
+                    "type": "Custom",
+                    "size": "UUID"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_d21695e1-5d06-47a1-941d-225495f6cf6a",
+              "name": "fk_ProductDimension",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "6e3a5802-e3af-4264-86fc-8495222cf6d6",
+                "sourceTableId": "7f4944d8-ce31-4362-b7e3-dd61cf36595d",
+                "columns": [
+                  {
+                    "id": "fk_97db68dc-e745-4e36-a49d-a9d0b8277e67",
+                    "name": "ProductKey",
+                    "type": "Custom",
+                    "size": "UUID"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_2a6da51c-e66d-4ccd-bab1-fa918b3ba7c0",
+              "name": "fk_CustomerDimension",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "42e561e8-2751-42fc-bf91-8e288d5460a7",
+                "sourceTableId": "a6dc976f-fafb-4f94-b800-41d9f554f72f",
+                "columns": [
+                  {
+                    "id": "fk_6e0845c6-a826-44b3-a728-87614dac34d8",
+                    "name": "CustomerKey",
+                    "type": "Custom",
+                    "size": "UUID"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_7f3e3c85-03a1-4585-8e91-948350cc9c08",
+              "name": "fk_DepotDimension",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "ef722a95-4bd6-45ba-8041-59f1e0d4bb3b",
+                "sourceTableId": "ab1b92c9-9953-44b2-96fe-e7e4c2a99689",
+                "columns": [
+                  {
+                    "id": "fk_c7c444b7-c7b7-4609-bfeb-9b37699c6ac6",
+                    "name": "DepotKey",
+                    "type": "Custom",
+                    "size": "UUID"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "fk_49499519-eab8-4827-a663-c39921b1b3b9",
+              "name": "fk_EmployeeDimension",
+              "type": "None",
+              "isForeignKey": true,
+              "foreignKeyProps": {
+                "foreignKeyGroupId": "a9417bcd-35ad-4418-9f80-45469cac3932",
+                "sourceTableId": "4cd8b933-c8fe-4c8a-b98d-b0a1c5c5739b",
+                "columns": [
+                  {
+                    "id": "fk_864ac8b6-1548-43a4-9ed7-e1d985a1d971",
+                    "name": "EmployeeKey",
+                    "type": "Custom",
+                    "size": "UUID"
+                  }
+                ]
+              },
+              "isPrimaryKey": true,
+              "isOptional": false
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false,
+          "isFactTable": true
+        },
+        "measured": {
+          "width": 240,
+          "height": 229
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "ab1b92c9-9953-44b2-96fe-e7e4c2a99689",
+        "type": "Table",
+        "position": {
+          "x": 325.45248032300987,
+          "y": 118.80455645817398
+        },
+        "data": {
+          "label": "DepotDimension",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "c7c444b7-c7b7-4609-bfeb-9b37699c6ac6",
+              "name": "DepotKey",
+              "type": "Custom",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "size": "UUID"
+            },
+            {
+              "id": "49395f76-b84b-4432-bf23-826654a616b3",
+              "name": "DepotID",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "ccd978ce-7b87-46dd-ad70-a18b890ca1ba",
+              "name": "DepotSize",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "50"
+            },
+            {
+              "id": "87021197-e2ed-44fc-ba38-6c0decaea2ea",
+              "name": "DepotZip",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "30"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 126
+        },
+        "selected": true,
+        "dragging": false
+      },
+      {
+        "id": "4cd8b933-c8fe-4c8a-b98d-b0a1c5c5739b",
+        "type": "Table",
+        "position": {
+          "x": 325.6442172575542,
+          "y": 265.42804062384874
+        },
+        "data": {
+          "label": "EmployeeDimension",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "864ac8b6-1548-43a4-9ed7-e1d985a1d971",
+              "name": "EmployeeKey",
+              "type": "Custom",
+              "position": 0,
+              "isPrimaryKey": true,
+              "isOptional": false,
+              "size": "UUID"
+            },
+            {
+              "id": "ae13212a-4554-44a2-80ef-015f733eaa8a",
+              "name": "EmployeeID",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "6eb14790-e4d6-460e-a348-97b13005f184",
+              "name": "EmployeeName",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            },
+            {
+              "id": "57ad4173-9f5d-4278-aece-c8c2db7123fb",
+              "name": "EmployeeTitle",
+              "type": "Custom",
+              "position": 0,
+              "size": "EMPLOYEETITLE"
+            },
+            {
+              "id": "f95a2701-4b06-49ea-8182-6d124d7ef690",
+              "name": "EmployeeEducationLevel",
+              "type": "Custom",
+              "position": 0,
+              "size": "EMPLOYEEEDUCATIONLEVEL"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 167
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "ae891d80-0a02-4663-a3a6-4d27e562abec",
+        "type": "Table",
+        "position": {
+          "x": 930.3080171314633,
+          "y": -60.83017839900944
+        },
+        "data": {
+          "label": "Calendar",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "8ec33a38-f6ac-4a7a-9f52-68b5759757a1",
+              "name": "CalendarKey",
+              "type": "Custom",
+              "position": 0,
+              "size": "UUID",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "8aa3bcfd-cece-4ebf-b3d7-1f0f98fa174d",
+              "name": "CompleteDate",
+              "type": "DATE",
+              "position": 0
+            },
+            {
+              "id": "81cce6d9-ec8c-45bb-8450-30ddf1531e27",
+              "name": "WeekDay",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "3"
+            },
+            {
+              "id": "f008ded4-ac5a-4a2c-8d72-1da85419d088",
+              "name": "MonthDay",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "7aad31de-4aae-41b7-9768-de64e11ef4c3",
+              "name": "Month",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "2da98527-499a-425d-a98f-1361cefd6327",
+              "name": "Trimestry",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "b28d373c-040e-4100-b48d-8f714aaef590",
+              "name": "Year",
+              "type": "INT",
+              "position": 0
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 201
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "7f4944d8-ce31-4362-b7e3-dd61cf36595d",
+        "type": "Table",
+        "position": {
+          "x": 929.7286361900655,
+          "y": 149.8637753701131
+        },
+        "data": {
+          "label": "ProductDimension",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "97db68dc-e745-4e36-a49d-a9d0b8277e67",
+              "name": "ProductKey",
+              "type": "Custom",
+              "position": 0,
+              "size": "UUID",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "4a8a3c3d-b254-48fb-9715-1c1cc5dbdd77",
+              "name": "ProductID",
+              "type": "INT",
+              "position": 0,
+              "isPrimaryKey": false
+            },
+            {
+              "id": "df742bdb-9371-48de-83a1-6038d3cffe92",
+              "name": "ProductName",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            },
+            {
+              "id": "0c1142f7-a0f4-4f9f-93db-9de9da7307cc",
+              "name": "ProductType",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "100"
+            },
+            {
+              "id": "06901db7-b1e7-417f-b804-7fdf7013b040",
+              "name": "SupplierName",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 151
+        },
+        "selected": false,
+        "dragging": false
+      },
+      {
+        "id": "a6dc976f-fafb-4f94-b800-41d9f554f72f",
+        "type": "Table",
+        "position": {
+          "x": 932.0260329000594,
+          "y": 313.60572651545965
+        },
+        "data": {
+          "label": "CustomerDimension",
+          "isConnectable": false,
+          "columns": [
+            {
+              "id": "6e0845c6-a826-44b3-a728-87614dac34d8",
+              "name": "CustomerKey",
+              "type": "Custom",
+              "position": 0,
+              "size": "UUID",
+              "isPrimaryKey": true,
+              "isOptional": false
+            },
+            {
+              "id": "cdd010e9-5f52-4a2b-896b-2a52b3d6791a",
+              "name": "CustomerID",
+              "type": "INT",
+              "position": 0
+            },
+            {
+              "id": "d5990e29-ac70-41a9-b33f-368c0421a235",
+              "name": "CustomerName",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "255"
+            },
+            {
+              "id": "093e12e5-13cf-442f-a321-dd7e5ff54f0a",
+              "name": "CustomerType",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "20"
+            },
+            {
+              "id": "457af95d-2bd4-4fba-be5e-d5c4e70cadf9",
+              "name": "CustomerZip",
+              "type": "VARCHAR(n)",
+              "position": 0,
+              "size": "30"
+            }
+          ],
+          "numberOfGroups": 0,
+          "isSelected": false
+        },
+        "measured": {
+          "width": 240,
+          "height": 151
+        },
+        "selected": false,
+        "dragging": false
+      }
+    ],
+    "edges": [
+      {
+        "id": "ae891d80-0a02-4663-a3a6-4d27e562abec->f06fea1a-3a50-4adf-aba8-fcb6e232e0e7_da4be0b1-0894-45ae-8c6e-2b9f02c9ed1f",
+        "type": "Relational",
+        "source": "ae891d80-0a02-4663-a3a6-4d27e562abec",
+        "targetHandle": "foreign-key-handle-da4be0b1-0894-45ae-8c6e-2b9f02c9ed1f",
+        "target": "f06fea1a-3a50-4adf-aba8-fcb6e232e0e7",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "da4be0b1-0894-45ae-8c6e-2b9f02c9ed1f",
+            "sourceTableId": "ae891d80-0a02-4663-a3a6-4d27e562abec",
+            "columns": [
+              {
+                "id": "fk_8ec33a38-f6ac-4a7a-9f52-68b5759757a1",
+                "name": "CalendarKey",
+                "type": "Custom",
+                "size": "UUID"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "7f4944d8-ce31-4362-b7e3-dd61cf36595d->f06fea1a-3a50-4adf-aba8-fcb6e232e0e7_6e3a5802-e3af-4264-86fc-8495222cf6d6",
+        "type": "Relational",
+        "source": "7f4944d8-ce31-4362-b7e3-dd61cf36595d",
+        "targetHandle": "foreign-key-handle-6e3a5802-e3af-4264-86fc-8495222cf6d6",
+        "target": "f06fea1a-3a50-4adf-aba8-fcb6e232e0e7",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "6e3a5802-e3af-4264-86fc-8495222cf6d6",
+            "sourceTableId": "7f4944d8-ce31-4362-b7e3-dd61cf36595d",
+            "columns": [
+              {
+                "id": "fk_97db68dc-e745-4e36-a49d-a9d0b8277e67",
+                "name": "ProductKey",
+                "type": "Custom",
+                "size": "UUID"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "a6dc976f-fafb-4f94-b800-41d9f554f72f->f06fea1a-3a50-4adf-aba8-fcb6e232e0e7_42e561e8-2751-42fc-bf91-8e288d5460a7",
+        "type": "Relational",
+        "source": "a6dc976f-fafb-4f94-b800-41d9f554f72f",
+        "targetHandle": "foreign-key-handle-42e561e8-2751-42fc-bf91-8e288d5460a7",
+        "target": "f06fea1a-3a50-4adf-aba8-fcb6e232e0e7",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "42e561e8-2751-42fc-bf91-8e288d5460a7",
+            "sourceTableId": "a6dc976f-fafb-4f94-b800-41d9f554f72f",
+            "columns": [
+              {
+                "id": "fk_6e0845c6-a826-44b3-a728-87614dac34d8",
+                "name": "CustomerKey",
+                "type": "Custom",
+                "size": "UUID"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "ab1b92c9-9953-44b2-96fe-e7e4c2a99689->f06fea1a-3a50-4adf-aba8-fcb6e232e0e7_ef722a95-4bd6-45ba-8041-59f1e0d4bb3b",
+        "type": "Relational",
+        "source": "ab1b92c9-9953-44b2-96fe-e7e4c2a99689",
+        "targetHandle": "foreign-key-handle-ef722a95-4bd6-45ba-8041-59f1e0d4bb3b",
+        "target": "f06fea1a-3a50-4adf-aba8-fcb6e232e0e7",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "ef722a95-4bd6-45ba-8041-59f1e0d4bb3b",
+            "sourceTableId": "ab1b92c9-9953-44b2-96fe-e7e4c2a99689",
+            "columns": [
+              {
+                "id": "fk_c7c444b7-c7b7-4609-bfeb-9b37699c6ac6",
+                "name": "DepotKey",
+                "type": "Custom",
+                "size": "UUID"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "4cd8b933-c8fe-4c8a-b98d-b0a1c5c5739b->f06fea1a-3a50-4adf-aba8-fcb6e232e0e7_a9417bcd-35ad-4418-9f80-45469cac3932",
+        "type": "Relational",
+        "source": "4cd8b933-c8fe-4c8a-b98d-b0a1c5c5739b",
+        "targetHandle": "foreign-key-handle-a9417bcd-35ad-4418-9f80-45469cac3932",
+        "target": "f06fea1a-3a50-4adf-aba8-fcb6e232e0e7",
+        "markerStart": {
+          "type": "arrow"
+        },
+        "data": {
+          "foreignKeyProps": {
+            "foreignKeyGroupId": "a9417bcd-35ad-4418-9f80-45469cac3932",
+            "sourceTableId": "4cd8b933-c8fe-4c8a-b98d-b0a1c5c5739b",
+            "columns": [
+              {
+                "id": "fk_864ac8b6-1548-43a4-9ed7-e1d985a1d971",
+                "name": "EmployeeKey",
+                "type": "Custom",
+                "size": "UUID"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "viewport": {
+      "x": 151.516091359372,
+      "y": 134.4385009944808,
+      "zoom": 0.6590864633890304
+    }
+  },
+  "name": "Big Z Data Warehouse",
+  "folder": {
+    "name": "Diagrams",
+    "folderType": 1,
+    "depth": 0,
+    "id": 13153
+  },
+  "id": 33969,
+  "updatedAtTimestamp": 1758564978
+}
